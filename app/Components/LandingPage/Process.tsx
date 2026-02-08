@@ -1,0 +1,87 @@
+"use client";
+import React from "react";
+import { motion } from "motion/react";
+
+const steps = [
+  {
+    number: "01",
+    title: "Discovery & Planning",
+    description:
+      "We dive deep into your business goals, user needs, and technical requirements to build a solid roadmap.",
+  },
+  {
+    number: "02",
+    title: "Design & Architecture",
+    description:
+      "We craft intuitive UI/UX designs and architect scalable systems that are ready for future growth.",
+  },
+  {
+    number: "03",
+    title: "Development",
+    description:
+      "Our engineers build your software using modern, reliable tech stacks with rigorous testing at every stage.",
+  },
+  {
+    number: "04",
+    title: "Launch & Support",
+    description:
+      "We handle the deployment and provide ongoing monitoring and updates to ensure peak performance.",
+  },
+];
+
+const Process = () => {
+  return (
+    <section className="container">
+      <div className="relative bg-slate-900 text-white rounded-[3rem] p-12">
+        {/* Background Gradients */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+          <div className="absolute top-[-50%] left-[-20%] w-[800px] h-[800px] bg-blue-500 rounded-full blur-[120px]"></div>
+          <div className="absolute bottom-[-50%] right-[-20%] w-[800px] h-[800px] bg-purple-500 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div className="mx-auto relative z-10">
+          <div className="mb-20">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-2 block">
+              Our Process
+            </span>
+            <h2 className="text-4xl md:text-5xl font-light tracking-tight text-white mb-6">
+              From concept to{" "}
+              <span className="font-semibold text-white">code.</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="absolute top-12 left-0 w-full h-px bg-slate-800 hidden lg:block z-0"></div>
+
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="relative z-10"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-24 h-24 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center text-3xl font-light text-white shadow-xl relative z-10">
+                    {step.number}
+                  </div>
+                </div>
+
+                <h3 className="text-xl font-medium text-white mb-3 pr-4">
+                  {step.title}
+                </h3>
+                <p className="text-sm text-slate-400 leading-relaxed pr-4">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Process;
